@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>进度调测试5</title>
+    <script>
+        function download() {
+            var  pro=document.getElementsByTagName( "progress" )[0];
+            pro.style.display = 'block';
+            var progressValue = document.querySelector('#progress-value');
+            progressValue.style.display = 'block';
+            var value = 0;
+
+            setInterval(function() {
+                if (value < 100){
+                    value++;
+                    pro.value = value;
+                    progressValue.innerText = value + '%';
+                }else {
+                    progressValue.innerText = '下载完成';
+                    setInterval(function (){
+                        location.replace(location.href);
+                    },2000);
+                }
+            }, 20);
+        };
+    </script>
+</head>
+<body>
+<br/>
+<span id="progress-value" hidden="hidden">0</span>
+<progress value= "0"  max= "100" hidden="hidden">您的浏览器不支持progress标签</progress>
+
+<br/>
+<button onclick="download()">点击下载</button>
+
+    <div style="position: relative;width: 175px;height: 100%;margin-left: calc(50% - 50px);display: inline-block">
+        <progress value= "0"  max= "100" hidden="hidden">
+            您的浏览器不支持progress标签
+        </progress>
+        <span id="progress-value" hidden="hidden" style="position: absolute;top:-4px;right:5px"></span>
+        <p id="progress-tips" hidden="hidden" style="text-align: center;width: 122px"></p>
+    </div>
+</body>
+</html>
